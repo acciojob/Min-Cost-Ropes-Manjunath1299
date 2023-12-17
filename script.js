@@ -12,7 +12,8 @@ function mincost(arr)
 		arr.push(currentcost);
 		arr.sort((a,b)=>b-a);
 	}
-	console.log(totacost);
+	// console.log(totacost);
+	return totacost;
 }
 
 module.exports=mincost;
