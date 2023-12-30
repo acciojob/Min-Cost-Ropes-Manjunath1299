@@ -1,19 +1,19 @@
-function mincost(arr)
-{ 
-//write your code here
-// return the min cost
-	let totacost=0;
-  arr=arr.sort((a,b)=>b-a);
-	while (arr.length>1){
-		let currentcost=arr[arr.length-1]+arr[arr.length-2];
-		total+=totacost;
-		arr.pop();
-		arr.pop();
-		arr.push(currentcost);
-		arr.sort((a,b)=>b-a);
-	}
-	// console.log(totacost);
-	return totacost;
+function minCost(arr) {
+  let totalCost = 0;
+  arr = arr.sort((a, b) => a - b); // Sort in ascending order for optimal cost
+
+  while (arr.length > 1) {
+    const currentCost = arr[0] + arr[1];
+    totalCost += currentCost;
+    arr.splice(0, 2, currentCost); // Combine two smallest ropes and insert new length
+  }
+
+  return totalCost;
 }
 
-module.exports=mincost;
+function calculateMinCost() {
+  const ropeLengthsString = document.getElementById("rope-lengths").value;
+  const ropeLengthsArray = ropeLengthsString.split(" ").map(Number);
+  const minCost = minCost(ropeLengthsArray);
+  document.getElementById("result").textContent = `Minimum cost: ${minCost}`;
+}
